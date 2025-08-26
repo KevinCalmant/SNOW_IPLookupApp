@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="DELETE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_697264_iplookup2_ipaddressinfo</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_697264_iplookup2_ipaddressinfo">null<item endquery="false" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Populate IP Address City</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// Add your code here
+	try { 
+		var r = new sn_ws.RESTMessageV2('x_697264_iplookup2.IPInfo', 'Default GET');
+		r.setStringParameterNoEscape('ipaddress', 'current.ip_address');
+		r.setStringParameterNoEscape('specific_field', 'geo');
+
+		var responseObj = JSON.parse(responseBody);
+
+		current.city = responseObj.city;
+		gs.info("City = " + current.city);
+		
+		current.update();
+
+		var response = r.execute();
+		var responseBody = response.getBody();
+		var httpStatus = response.getStatusCode();
+	}
+	catch(ex) {
+		gs.info("Uncaught error: " + err);
+		var message = ex.message;
+	}
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-26 08:22:36</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9d162e1e83ab6210173ef865eeaad397</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Populate IP Address City</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="IPLookup2" source="x_697264_iplookup2">0e43ee9283ab6210173ef865eeaad31d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="IPLookup2">0e43ee9283ab6210173ef865eeaad31d</sys_scope>
+        <sys_update_name>sys_script_9d162e1e83ab6210173ef865eeaad397</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-26 08:44:13</sys_updated_on>
+        <template/>
+        <when>async_always</when>
+    </sys_script>
+    <sys_translated_text action="DELETE" query="documentkey=9d162e1e83ab6210173ef865eeaad397"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="IPLookup2">0e43ee9283ab6210173ef865eeaad31d</application>
+        <file_path/>
+        <instance_id>e0f614f3eb20ae50cbdefceacad0cd46</instance_id>
+        <instance_name>dev314529</instance_name>
+        <name>sys_script_9d162e1e83ab6210173ef865eeaad397</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script"&gt;&lt;sys_script action="INSERT_OR_UPDATE"&gt;&lt;abort_action&gt;false&lt;/abort_action&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;action_delete&gt;false&lt;/action_delete&gt;&lt;action_insert&gt;true&lt;/action_insert&gt;&lt;action_query&gt;false&lt;/action_query&gt;&lt;action_update&gt;true&lt;/action_update&gt;&lt;active&gt;true&lt;/active&gt;&lt;add_message&gt;false&lt;/add_message&gt;&lt;advanced&gt;true&lt;/advanced&gt;&lt;change_fields&gt;false&lt;/change_fields&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;collection&gt;x_697264_iplookup2_ipaddressinfo&lt;/collection&gt;&lt;condition/&gt;&lt;description/&gt;&lt;execute_function&gt;false&lt;/execute_function&gt;&lt;filter_condition table="x_697264_iplookup2_ipaddressinfo"&gt;null&lt;item endquery="false" field="" goto="false" newquery="false" operator="=" or="false" value=""/&gt;&lt;/filter_condition&gt;&lt;is_rest&gt;false&lt;/is_rest&gt;&lt;message/&gt;&lt;name&gt;Populate IP Address City&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;priority&gt;100&lt;/priority&gt;&lt;rest_method/&gt;&lt;rest_method_text/&gt;&lt;rest_service/&gt;&lt;rest_service_text/&gt;&lt;rest_variables/&gt;&lt;role_conditions/&gt;&lt;script&gt;&lt;![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// Add your code here
+	try { 
+		var r = new sn_ws.RESTMessageV2('x_697264_iplookup2.IPInfo', 'Default GET');
+		r.setStringParameterNoEscape('ipaddress', 'current.ip_address');
+		r.setStringParameterNoEscape('specific_field', 'geo');
+
+		var responseObj = JSON.parse(responseBody);
+
+		current.city = responseObj.city;
+		gs.info("City = " + current.city);
+		
+		current.update();
+
+		var response = r.execute();
+		var responseBody = response.getBody();
+		var httpStatus = response.getStatusCode();
+	}
+	catch(ex) {
+		gs.info("Uncaught error: " + err);
+		var message = ex.message;
+	}
+})(current, previous);]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-08-26 08:22:36&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;9d162e1e83ab6210173ef865eeaad397&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;Populate IP Address City&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="IPLookup2" source="x_697264_iplookup2"&gt;0e43ee9283ab6210173ef865eeaad31d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="IPLookup2"&gt;0e43ee9283ab6210173ef865eeaad31d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_9d162e1e83ab6210173ef865eeaad397&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-08-26 08:44:13&lt;/sys_updated_on&gt;&lt;template/&gt;&lt;when&gt;async_always&lt;/when&gt;&lt;/sys_script&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=9d162e1e83ab6210173ef865eeaad397"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1237976265</payload_hash>
+        <record_name>Populate IP Address City</record_name>
+        <reverted_from/>
+        <source>4643ee9283ab6210173ef865eeaad31f</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-26 08:44:13</sys_created_on>
+        <sys_id>c33b221683eb6210173ef865eeaad362</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>198e58c9a950000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-26 08:44:13</sys_updated_on>
+        <type>Business Rule</type>
+        <update_guid>0b3b2216d3eb6210ae7cf252a68f4b61</update_guid>
+        <update_guid_history>0b3b2216d3eb6210ae7cf252a68f4b61:1237976265,471b6ad272eb62107c0a6b6b5de7655d:-1741682580,b1f6e61eaeab621029814357c7d207a1:-1159540971,da466e1ee6ab62100c35e16b6d508e26:79231657</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-08-26 08:49:28</sys_created_on>
+        <sys_db_object display_value="" name="sys_script">sys_script</sys_db_object>
+        <sys_id>29ff689dc22b46d8b833d53d47be1a44</sys_id>
+        <sys_metadata>9d162e1e83ab6210173ef865eeaad397</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Populate IP Address City</sys_name>
+        <sys_package display_value="IPLookup2" source="x_697264_iplookup2">0e43ee9283ab6210173ef865eeaad31d</sys_package>
+        <sys_parent display_value="IPAddressInfo">31756eda83ab6210173ef865eeaad348</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="IPLookup2">0e43ee9283ab6210173ef865eeaad31d</sys_scope>
+        <sys_scope_delete display_value="">ae2ee65f432b4af0bc368852cb3eb504</sys_scope_delete>
+        <sys_update_name>sys_script_9d162e1e83ab6210173ef865eeaad397</sys_update_name>
+        <sys_update_version display_value="sys_script_9d162e1e83ab6210173ef865eeaad397">c33b221683eb6210173ef865eeaad362</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-08-26 08:49:28</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
